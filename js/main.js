@@ -21,15 +21,28 @@ document.getElementById('letters').addEventListener('click', handleLetterClick);
 
 
 /*----- functions -----*/
+init()
+
 function init() {
     // usedLetters, wrongGuesses, secret, guess;
-    usedLetters = []
-    wrongGuesses = []
+    usedLetters = [];
+    wrongGuesses = [];
+    let rndIdx = Math.floor(Math.random() * WORDS.length)
+    secret = WORDS[rndIdx];
+    console.log(secret)
+    guess = '_'.repeat(secret.length);
+    render();
+}
+
+function render(){
+    guessEl.textContent = guess
+    hangmanImage.style.backgroundPosition = `${-75 * wrongGuesses.length}px 0`
 }
 
 
-
 function handleLetterClick(evt){
-    console.log(evt.target.textContent);
+    let letter = evt.target.textContent
+    wrongGuesses.push(letter)
+    render()
 }
 
