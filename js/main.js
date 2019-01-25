@@ -19,6 +19,7 @@ const msgEl = document.querySelector('h2');
 
 /*----- event listeners -----*/ 
 document.getElementById('letters').addEventListener('click', handleLetterClick);
+document.getElementById('replay').addEventListener('click', init)
 
 
 /*----- functions -----*/
@@ -43,6 +44,9 @@ function render(){
     }
     else if (wrongGuesses.length === MAX_WRONG_GUESSES){
         msgEl.textContent = "you lose"
+    }
+    else {
+        msgEl.textContent = "good luck"
     }
 }
 
